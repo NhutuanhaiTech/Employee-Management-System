@@ -1,0 +1,124 @@
+/* Lớp nền mờ bao phủ toàn màn hình */
+.confirm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.6); /* Màu đen nhạt pha xanh navy */
+  backdrop-filter: blur(4px); /* Làm mờ khung cảnh phía sau (Rất hiện đại) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Đảm bảo luôn nằm trên cùng */
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Hộp thoại xác nhận */
+.confirm-modal-box {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Phần Tiêu đề & Icon */
+.confirm-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 24px 16px 24px;
+}
+
+.icon-warning-wrapper {
+  background-color: #fee2e2; /* Nền đỏ nhạt */
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-warning {
+  color: #ef4444; /* Icon màu đỏ đậm */
+}
+
+.confirm-modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+/* Phần Nội dung thông báo */
+.confirm-modal-body {
+  padding: 0 24px 24px 24px;
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.confirm-modal-body p {
+  margin: 0 0 8px 0;
+}
+
+.text-danger-hint {
+  font-size: 13px;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+/* Phần Nút bấm (Footer) */
+.confirm-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  background-color: #f8fafc; /* Nền xám nhạt tạo điểm nhấn tách biệt với thân */
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Style cho các Nút bấm */
+.btn-confirm-cancel, .btn-confirm-delete {
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-confirm-cancel {
+  background-color: #ffffff;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
+.btn-confirm-cancel:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+.btn-confirm-delete {
+  background-color: #ef4444;
+  color: white;
+  border: 1px solid transparent;
+}
+
+.btn-confirm-delete:hover {
+  background-color: #dc2626; /* Hover đậm lên */
+}
+
+/* Hiệu ứng chuyển động xuất hiện mượt mà */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}

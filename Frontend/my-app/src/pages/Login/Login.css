@@ -1,0 +1,155 @@
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #1282a2; 
+  font-family: 'Nunito', 'Roboto', sans-serif;
+  margin: 0;
+}
+
+.login-card {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 500px;
+  padding: 40px;
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-title {
+  text-align: center;
+  color: #666;
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #1282a2;
+}
+
+.form-group input.input-error {
+  border-color: #dc2626;
+}
+
+.error-text {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.show-password-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 25px;
+}
+
+.show-password-container input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.show-password-container label {
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+}
+
+.btn-signin {
+  width: 100%;
+  padding: 14px;
+  background-color: #1282a2;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-signin:hover {
+  background-color: #0f6c87;
+}
+
+.login-footer {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.8;
+}
+
+.login-footer a {
+  color: #1282a2;
+  text-decoration: none;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+.login-error-alert {
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  background-color: #fef2f2; 
+  border: 1px solid #fecaca;
+  border-left: 4px solid #ef4444;
+  color: #b91c1c;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  animation: shake 0.4s ease-in-out;
+}
+
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.btn-signin {
+  width: 100%;
+  padding: 12px;
+  background-color: #1a6b82;
+  color: white;
+  font-weight: bold;
+  border: 1px solid #114b5c;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-signin:disabled {
+  background-color: #4b8b9d; 
+  cursor: not-allowed;
+  opacity: 0.8;
+}

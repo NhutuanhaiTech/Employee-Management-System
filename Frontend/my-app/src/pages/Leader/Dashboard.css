@@ -1,0 +1,771 @@
+/* HRMDashboard.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.hrm-app {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f6f8;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #374151;
+}
+.btn-view-content {
+  padding: 4px 12px;
+  font-size: 13px;
+  color: #2563eb;
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-view-content:hover {
+  background-color: #dbeafe;
+  border-color: #93c5fd;
+}
+
+/* 2. Lớp mờ nền xung quanh Popup */
+.content-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4); /* Nền đen mờ 40% */
+  backdrop-filter: blur(2px); /* Hiệu ứng blur hiện đại */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Luôn đè lên trên cùng */
+}
+
+/* 3. Khung Popup màu trắng ở giữa */
+.content-modal-box {
+  background-color: #ffffff;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 8px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+/* Hoạt ảnh trượt xuống nhẹ nhàng */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 4. Header của Popup (chứa Tiêu đề và nút X) */
+.content-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f3f4f6;
+  background-color: #f9fafb;
+  border-radius: 8px 8px 0 0;
+}
+
+.content-modal-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* 5. Nút X để đóng */
+.content-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: #9ca3af;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.content-modal-close:hover {
+  color: #ef4444; /* Đổi màu đỏ khi di chuột */
+}
+.badge-my-record {
+  background-color: #ecfdf5; /* Nền xanh lá cực nhạt */
+  color: #059669; /* Chữ xanh lá đậm */
+  padding: 4px 10px;
+  border-radius: 9999px; /* Bo tròn hai đầu giống hình viên thuốc */
+  font-weight: 600; /* In đậm một chút cho nổi bật */
+  font-size: 13px;
+  display: inline-block;
+  border: 1px solid #a7f3d0; /* Viền mỏng cho sắc nét */
+}
+/* 6. Phần nội dung chữ */
+.content-modal-body {
+  padding: 20px;
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.6;
+  max-height: 60vh; /* Nếu text quá dài sẽ không tràn màn hình */
+  overflow-y: auto; /* Tự sinh thanh cuộn nếu dài */
+}
+/* --- SIDEBAR --- */
+.hrm-sidebar {
+  width: 260px;
+  background-color: #1a2234;
+  color: #d1d5db;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+
+.sidebar-header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  background-color: #131927;
+}
+
+.logo-icon {
+  background-color: #2563eb;
+  padding: 6px;
+  border-radius: 8px;
+  color: white;
+}
+
+.logo-text h1 {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+.logo-text p {
+  font-size: 10px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.sidebar-content {
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.section-title {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.current-user-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #252f44;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #60a5fa;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.nav-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: #d1d5db;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.nav-btn:hover:not(.active) {
+  background-color: #252f44;
+}
+
+.nav-btn.active {
+  background-color: #2563eb;
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.nav-btn-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.badge-count {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  background-color: #313e59;
+}
+
+.nav-btn.active .badge-count {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.badge-count.orange {
+  background-color: #f97316;
+  color: white;
+}
+
+/* --- MAIN CONTENT --- */
+.hrm-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.main-header {
+  height: 64px;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+.header-title-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-title-area h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.flow-tag {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.header-user-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-role-text {
+  text-align: right;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .user-role-text { display: block; }
+}
+
+.user-role-text p:first-child {
+  font-size: 11px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.user-role-text p:last-child {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563eb;
+  margin: 0;
+}
+
+.user-profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-weight: 500;
+  color: #374151;
+}
+
+.user-profile-btn:hover {
+  background-color: #f3f4f6;
+}
+
+/* --- CONTENT AREA --- */
+.content-wrapper {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.toolbar {
+  background-color: white;
+  padding: 16px;
+  border-radius: 12px 12px 0 0;
+  border: 1px solid #e5e7eb;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toolbar-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.search-input {
+  padding: 8px 16px 8px 36px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  width: 250px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-add:hover {
+  background-color: #1d4ed8;
+}
+
+.info-banner {
+  background-color: #eff6ff;
+  border-left: 1px solid #bfdbfe;
+  border-right: 1px solid #bfdbfe;
+  border-bottom: 1px solid #bfdbfe;
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #1e40af;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.info-banner .icon {
+  color: #2563eb;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* --- TABLE --- */
+.table-container {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  margin-top: -1px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #f9fafb;
+  padding: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 16px;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+}
+
+.data-table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Specific Columns */
+.col-center { text-align: center; }
+
+.employee-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.avatar-blue { background-color: #2563eb; }
+.avatar-emerald { background-color: #059669; }
+.avatar-orange { background-color: #f97316; }
+.avatar-red { background-color: #ef4444; }
+.avatar-purple { background-color: #9333ea; }
+
+.emp-name {
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 4px 0;
+}
+
+.emp-sub {
+  font-size: 11px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.team-badge {
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #4b5563;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.contact-phone {
+  font-weight: 500;
+  color: #1f2937;
+  margin: 0 0 4px 0;
+}
+
+.contact-email {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.creator-self {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.creator-other {
+  color: #6b7280;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.status-luu-moi { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
+.status-luu-moi .status-dot { background: #6b7280; }
+.status-cho-xu-ly { 
+  background: #fef9c3; 
+  color: #854d0e; 
+  border: 1px solid #fde047; 
+}
+.status-cho-xu-ly .status-dot { 
+  background: #eab308; 
+}
+
+.status-yeu-cau { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+.status-yeu-cau .status-dot { background: #f97316; }
+
+.status-tu-choi { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+.status-tu-choi .status-dot { background: #ef4444; }
+
+.status-da-duyet { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+.status-da-duyet .status-dot { background: #22c55e; }
+data-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+/* NÂNG CẤP HIỆU ỨNG HOVER TẠI ĐÂY */
+.data-table tbody tr:hover {
+  /* 1. Làm màu nền đậm hơn một chút (Màu xám xanh nhạt) */
+  background-color: #dce8f4; 
+  
+  /* 2. Tạo một vạch màu xanh biển đậm (Primary color) ở sát mép bên trái */
+  box-shadow: inset 4px 0 0 0 #2563eb; 
+  
+  /* 3. Đổi con trỏ chuột thành hình bàn tay để có cảm giác tương tác tốt hơn */
+  cursor: pointer;
+}
+
+/* 4. (Tùy chọn) Làm cho các phần chữ nhạt màu mờ mờ trong hàng đó sáng lên một chút khi hover */
+.data-table tbody tr:hover .contact-email,
+.data-table tbody tr:hover .emp-sub {
+  color: #4b5563; 
+  transition: color 0.2s ease;
+}
+/* Actions */
+.actions-group {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.data-table tbody tr:hover .actions-group {
+  opacity: 1;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.force-center-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important; 
+  flex-shrink: 0 !important; 
+}
+ 
+
+.force-center-icon svg {
+  margin: 0 !important;
+  display: block !important;
+}
+.btn-icon-blue { color: #2563eb; }
+.btn-icon-blue:hover { background-color: #eff6ff; }
+
+.btn-icon-red { color: #ef4444; }
+.btn-icon-red:hover { background-color: #fef2f2; }
+
+.btn-icon-orange { color: #f97316; }
+.btn-icon-orange:hover { background-color: #fff7ed; }
+
+.btn-icon-green { color: #16a34a; }
+.btn-icon-green:hover { background-color: #f0fdf4; }
+
+.btn-icon-gray { color: #6b7280; }
+.btn-icon-gray:hover { background-color: #f3f4f6; }
+
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-top: 8px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.pagination-info {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.page-badge {
+  font-weight: 700;
+  color: #2563eb;
+  background-color: #eff6ff;
+  padding: 2px 10px;
+  border-radius: 6px;
+  border: 1px solid #dbeafe;
+}
+
+/* Nhóm chứa 2 nút bấm */
+.pagination-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Kiểu dáng mặc định của nút bấm trang */
+.btn-page {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  color: #374151;
+  cursor: pointer;
+}
+
+/* 1. Trạng thái bị khóa (Disabled) */
+.btn-page:disabled {
+  background-color: #f9fafb;
+  border-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* 2. Trạng thái rê chuột vào (Hover) - Chỉ áp dụng khi nút không bị khóa */
+.btn-page:not(:disabled):hover {
+  background-color: #eff6ff;
+  color: #2563eb;
+  border-color: #bfdbfe;
+  /* Đổ bóng và nổi nút lên trên 2px */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px); 
+}
+
+/* 3. Trạng thái khi bấm chuột xuống (Active) */
+.btn-page:not(:disabled):active {
+  /* Ép nút lún trở lại vị trí ban đầu để tạo cảm giác vật lý */
+  transform: translateY(0); 
+}
+
+/* 1. Thiết lập Sidebar thành cột dọc (BẮT BUỘC để đẩy nút xuống đáy) */
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Chiều cao bằng 100% màn hình */
+  /* Các màu nền dark theme của bạn giữ nguyên */
+}
+
+/* 2. Đẩy khu vực Footer xuống dưới cùng và tạo vạch ngăn cách */
+.sidebar-footer {
+  margin-top: auto; /* CHIÊU THỨC QUAN TRỌNG: Đẩy mọi thứ xuống đáy */
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Vạch kẻ mờ tinh tế */
+}
+
+/* 3. Lột xác nút Đăng xuất */
+.sidebar-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: transparent; /* Nền trong suốt để tiệp với sidebar */
+  color: #94a3b8; /* Chữ màu xám nhạt (như các menu khác) */
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt 0.3s */
+}
+
+/* 4. Hiệu ứng Hover (Khi di chuột vào) */
+.sidebar-logout-btn:hover {
+  background-color: rgba(239, 68, 68, 0.1); /* Phủ một lớp nền đỏ cực nhạt */
+  color: #ef4444; /* Icon và chữ sáng lên màu đỏ */
+}
+
+/* 5. Hiệu ứng Active (Khi bấm chuột xuống) */
+.sidebar-logout-btn:active {
+  transform: scale(0.96); /* Lún nhẹ xuống tạo cảm giác bấm thật */
+}
+
+.rf-tab-status.saved {
+  background-color: #d1fae5;
+  color: #059669;
+  font-weight: 600;
+}
+.rf-btn-finish {
+  background-color: #059669; /* Màu xanh lá cho nút Hoàn thành */
+  color: #fff;
+}
+.rf-btn-finish:hover {
+  background-color: #047857;
+}

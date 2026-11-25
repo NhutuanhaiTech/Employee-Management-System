@@ -1,0 +1,974 @@
+/* HRMDashboard.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.hrm-app {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f6f8;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #374151;
+}
+
+/* --- SIDEBAR --- */
+.hrm-sidebar {
+  width: 260px;
+  background-color: #1a2234;
+  color: #d1d5db;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+
+.sidebar-header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  background-color: #131927;
+}
+
+.logo-icon {
+  background-color: #2563eb;
+  padding: 6px;
+  border-radius: 8px;
+  color: white;
+}
+
+.logo-text h1 {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+.logo-text p {
+  font-size: 10px;
+  color: #9ca3af;
+  margin: 0;
+}
+
+.sidebar-content {
+  padding: 16px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.section-title {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 600;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.current-user-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #252f44;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #60a5fa;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.nav-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: #d1d5db;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.nav-btn:hover:not(.active) {
+  background-color: #252f44;
+}
+
+.nav-btn.active {
+  background-color: #2563eb;
+  color: white;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.nav-btn-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.badge-count {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  background-color: #313e59;
+}
+
+.nav-btn.active .badge-count {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.badge-count.orange {
+  background-color: #f97316;
+  color: white;
+}
+
+/* --- MAIN CONTENT --- */
+.hrm-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.main-header {
+  height: 64px;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-shrink: 0;
+}
+
+.header-title-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-title-area h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+}
+
+.flow-tag {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.header-user-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.user-role-text {
+  text-align: right;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .user-role-text { display: block; }
+}
+
+.user-role-text p:first-child {
+  font-size: 11px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.user-role-text p:last-child {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563eb;
+  margin: 0;
+}
+
+.user-profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-weight: 500;
+  color: #374151;
+}
+
+.user-profile-btn:hover {
+  background-color: #f3f4f6;
+}
+
+/* --- CONTENT AREA --- */
+.content-wrapper {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.toolbar-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.search-input {
+  padding: 8px 16px 8px 36px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  width: 250px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.btn-add {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-add:hover {
+  background-color: #1d4ed8;
+}
+
+.info-banner {
+  background-color: #eff6ff;
+  border-left: 1px solid #bfdbfe;
+  border-right: 1px solid #bfdbfe;
+  border-bottom: 1px solid #bfdbfe;
+  padding: 12px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #1e40af;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.info-banner .icon {
+  color: #2563eb;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* --- TABLE --- */
+.table-container {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  margin-top: -1px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #f9fafb;
+  padding: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 16px;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+}
+
+.data-table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.data-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Specific Columns */
+.col-center { text-align: center; }
+
+.employee-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.avatar-blue { background-color: #2563eb; }
+.avatar-emerald { background-color: #059669; }
+.avatar-orange { background-color: #f97316; }
+.avatar-red { background-color: #ef4444; }
+.avatar-purple { background-color: #9333ea; }
+
+.emp-name {
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 4px 0;
+}
+
+.emp-sub {
+  font-size: 11px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.team-badge {
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  color: #4b5563;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.contact-phone {
+  font-weight: 500;
+  color: #1f2937;
+  margin: 0 0 4px 0;
+}
+
+.contact-email {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.creator-self {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.creator-other {
+  color: #6b7280;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.status-luu-moi { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
+.status-luu-moi .status-dot { background: #6b7280; }
+.status-cho-xu-ly { 
+  background: #fef9c3; 
+  color: #854d0e; 
+  border: 1px solid #fde047; 
+}
+.status-cho-xu-ly .status-dot { 
+  background: #eab308; 
+}
+
+.status-yeu-cau { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+.status-yeu-cau .status-dot { background: #f97316; }
+
+.status-tu-choi { background: #f02a2a; color: #b91c1c; border: 1px solid #fecaca; }
+.status-tu-choi .status-dot { background: #ef4444; }
+
+.status-da-duyet { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+.status-da-duyet .status-dot { background: #22c55e; }
+data-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+/* NÂNG CẤP HIỆU ỨNG HOVER TẠI ĐÂY */
+.data-table tbody tr:hover {
+  /* 1. Làm màu nền đậm hơn một chút (Màu xám xanh nhạt) */
+  background-color: #dce8f4; 
+  
+  /* 2. Tạo một vạch màu xanh biển đậm (Primary color) ở sát mép bên trái */
+  box-shadow: inset 4px 0 0 0 #2563eb; 
+  
+  /* 3. Đổi con trỏ chuột thành hình bàn tay để có cảm giác tương tác tốt hơn */
+  cursor: pointer;
+}
+
+/* 4. (Tùy chọn) Làm cho các phần chữ nhạt màu mờ mờ trong hàng đó sáng lên một chút khi hover */
+.data-table tbody tr:hover .contact-email,
+.data-table tbody tr:hover .emp-sub {
+  color: #4b5563; 
+  transition: color 0.2s ease;
+}
+/* Actions */
+.actions-group {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.data-table tbody tr:hover .actions-group {
+  opacity: 1;
+}
+
+.btn-icon {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.force-center-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important; 
+  flex-shrink: 0 !important;
+}
+ 
+.force-center-icon svg {
+  margin: 0 !important;
+  display: block !important;
+}
+.btn-icon-blue { color: #2563eb; }
+.btn-icon-blue:hover { background-color: #eff6ff; }
+
+.btn-icon-red { color: #ef4444; }
+.btn-icon-red:hover { background-color: #fef2f2; }
+
+.btn-icon-orange { color: #f97316; }
+.btn-icon-orange:hover { background-color: #fff7ed; }
+
+.btn-icon-green { color: #16a34a; }
+.btn-icon-green:hover { background-color: #f0fdf4; }
+
+.btn-icon-gray { color: #6b7280; }
+.btn-icon-gray:hover { background-color: #f3f4f6; }
+
+
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-top: 8px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+
+.pagination-info {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-badge {
+  font-weight: 700;
+  color: #2563eb;
+  background-color: #eff6ff;
+  padding: 2px 10px;
+  border-radius: 6px;
+  border: 1px solid #dbeafe;
+}
+
+.pagination-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-page {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff;
+  color: #374151;
+  cursor: pointer;
+}
+
+.btn-page:disabled {
+  background-color: #f9fafb;
+  border-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btn-page:not(:disabled):hover {
+  background-color: #eff6ff;
+  color: #2563eb;
+  border-color: #bfdbfe;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px); 
+}
+
+
+.btn-page:not(:disabled):active {
+  transform: translateY(0); 
+}
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; 
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: transparent;
+  color: #94a3b8;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sidebar-logout-btn:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.sidebar-logout-btn:active {
+  transform: scale(0.96);
+}
+
+.rf-tab-status.saved {
+  background-color: #d1fae5;
+  color: #059669;
+  font-weight: 600;
+}
+.rf-btn-finish {
+  background-color: #059669;
+  color: #fff;
+}
+.rf-btn-finish:hover {
+  background-color: #047857;
+}
+/* Thanh lọc trạng thái giống giao diện mẫu */
+.status-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+
+
+.status-filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.status-pill-btn {
+  padding: 7px 14px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: #f1f5f9;
+  color: #475569;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+
+.status-pill-btn:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.status-pill-btn.active {
+  background-color: #18181b;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.14);
+}
+
+.status-filter-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.status-filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* Trạng thái mặc định: Nền trắng, viền mảnh, bo góc 6px */
+.status-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #475569;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.status-pill-btn:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+/* Chấm tròn nhỏ nhận diện màu từng trạng thái */
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.pill-ALL .pill-dot { background-color: #64748b; }
+.pill-DRAFT .pill-dot { background-color: #2563eb; }
+.pill-PENDING .pill-dot { background-color: #eab308; }
+.pill-UPDATE_REQUIRED .pill-dot { background-color: #f97316; }
+.pill-REJECTED .pill-dot { background-color: #ef4444; }
+.pill-APPROVED .pill-dot { background-color: #16a34a; }
+
+/* Khi được chọn (Active): Màu phẳng đơn sắc giống nút Thêm mới */
+.status-pill-btn.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.status-pill-btn.active .pill-dot {
+  background-color: #ffffff;
+}
+
+.pill-ALL.active {
+  background-color: #1e293b;
+  border-color: #1e293b;
+}
+
+.pill-DRAFT.active {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+.pill-PENDING.active {
+  background-color: #d97706;
+  border-color: #d97706;
+}
+
+.pill-UPDATE_REQUIRED.active {
+  background-color: #ea580c;
+  border-color: #ea580c;
+}
+
+.pill-REJECTED.active {
+  background-color: #dc2626;
+  border-color: #dc2626;
+}
+
+.pill-APPROVED.active {
+  background-color: #16a34a;
+  border-color: #16a34a;
+}
+/* Màu chấm tròn nhận diện cho các trạng thái Tab 3 */
+.pill-TERMINATION_DRAFT .pill-dot { background-color: #2563eb; }
+.pill-TERMINATION_PENDING .pill-dot { background-color: #eab308; }
+.pill-TERMINATION_UPDATE_REQUIRED .pill-dot { background-color: #f97316; }
+.pill-TERMINATED .pill-dot { background-color: #dc2626; }
+.pill-ARCHIVED .pill-dot { background-color: #6366f1; }
+
+/* Màu nền phẳng khi được chọn (Active) */
+.pill-TERMINATION_DRAFT.active {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+.pill-TERMINATION_PENDING.active {
+  background-color: #d97706;
+  border-color: #d97706;
+}
+
+.pill-TERMINATION_UPDATE_REQUIRED.active {
+  background-color: #ea580c;
+  border-color: #ea580c;
+}
+
+.pill-TERMINATED.active {
+  background-color: #dc2626;
+  border-color: #dc2626;
+}
+
+.pill-ARCHIVED.active {
+  background-color: #4f46e5;
+  border-color: #4f46e5;
+}
+
+/* Badge trạng thái Nộp lưu (ARCHIVED) trong bảng */
+.status-badge.status-archived {
+  background-color: #eef2ff;
+  color: #4338ca;
+  border: 1px solid #c7d2fe;
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.status-filter-pills {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: nowrap;
+}
+
+/* Thu gọn kích thước nút để 7 nút nằm gọn 1 dòng và cao bằng ô tìm kiếm */
+.status-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #475569;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+.status-pill-btn:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.toolbar-actions .search-box {
+  display: flex;
+  align-items: center;
+  width: 230px;
+  height: 36px;
+  box-sizing: border-box;
+}
+
+.toolbar-actions .search-input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Khi màn hình quá nhỏ (< 1280px) mới cho phép xuống dòng gọn gàng */
+@media (max-width: 1280px) {
+  .toolbar {
+    flex-wrap: wrap;
+  }
+  .status-filter-pills {
+    flex-wrap: wrap;
+  }
+}
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+  flex-shrink: 0;
+}
+
+/* 1. Lưu mới / Lưu mới kết thúc - Xanh dương */
+.status-badge.status-draft {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border-color: #bfdbfe;
+}
+
+/* 2. Chờ xử lý / Chờ duyệt kết thúc - Vàng hổ phách */
+.status-badge.status-pending {
+  background-color: #fefce8;
+  color: #b45309;
+  border-color: #fde68a;
+}
+
+/* 3. Yêu cầu bổ sung / Yêu cầu bổ sung kết thúc - Cam */
+.status-badge.status-warning {
+  background-color: #fff7ed;
+  color: #ea580c;
+  border-color: #fed7aa;
+}
+
+/* 4. Đã duyệt - Xanh ngọc */
+.status-badge.status-approved {
+  background-color: #ecfdf5;
+  color: #047857;
+  border-color: #a7f3d0;
+}
+
+/* 5. Từ chối / Đã kết thúc - Đỏ */
+.status-badge.status-rejected {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+}
+
+/* 6. Nộp lưu - Tím chàm */
+.status-badge.status-archived {
+  background-color: #eef2ff;
+  color: #4338ca;
+  border-color: #c7d2fe;
+}
+
+/* Mặc định */
+.status-badge.status-default {
+  background-color: #f1f5f9;
+  color: #475569;
+  border-color: #cbd5e1;
+}

@@ -1,0 +1,852 @@
+
+:root {
+  --bg-app: #f4f6f8;
+  --bg-sidebar: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --primary-blue: #2563eb;
+  --primary-hover: #1d4ed8;
+  --border-color: #e5e7eb;
+  --error-color: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+}
+.app-container {
+  display: flex;
+  height: 100vh;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  padding: 24px;
+}
+
+.sidebar h2 {
+  color: var(--primary-blue);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.menu-item-active {
+  background-color: #eff6ff;
+  color: var(--primary-blue);
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 32px 40px;
+  overflow-y: auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #374151;
+}
+
+.btn-create {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-create:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Table */
+.table-wrapper {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table th {
+  padding: 14px 16px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #111827;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-table td {
+  padding: 16px;
+  font-size: 14px;
+  color: #374151;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-table tr:last-child td {
+  border-bottom: none;
+}
+
+.td-bold {
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Badges */
+.badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-leader { background-color: #ffedd5; color: #9a3412; }
+.badge-manager { background-color: #d1fae5; color: #065f46; }
+.badge-admin { background-color: #fee2e2; color: #991b1b; }
+
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; 
+  font-weight: 500;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; 
+  display: inline-block;
+}
+
+
+.status-active .status-dot {
+  background-color: #22c55e; 
+}
+.status-active {
+  color: #22c55e; 
+}
+
+
+.status-locked .status-dot {
+  background-color: #ef4444; 
+}
+.status-locked {
+  color: #ef4444; /* Tuỳ chọn: đổi màu chữ cho đồng bộ với chấm */
+}
+
+.btn-edit {
+  color: var(--primary-blue);
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+.btn-edit:hover {
+  text-decoration: underline;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background-color: #ffffff;
+  width: 550px;
+  border-radius: 10px;
+  padding: 28px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modal-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+/* Form */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 20px;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.form-group-full {
+  grid-column: span 2;
+}
+
+.form-label {
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.form-control {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  width:100%;
+  font-size: 14px;
+  outline: none;
+  background-color: #ffffff;
+}
+
+.form-control:focus {
+  border-color: var(--primary-blue);
+}
+
+.form-control.input-error {
+  border-color: var(--error-color);
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 12px;
+  margin-top: 4px;
+  text-align: left; 
+  line-height: 1.4;
+  display: block;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.btn-cancel {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #374151;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-save {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  font-family: 'Nunito', 'Roboto', sans-serif;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  color: #333333;
+  text-align: center;
+}
+
+.modal-content form div {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content label {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555555;
+}
+
+.modal-content input {
+  padding: 10px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.modal-content input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+  flex-direction: row !important;
+}
+
+.modal-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modal-actions button[type="button"] {
+  background-color: #f1f3f5;
+  color: #495057;
+}
+
+.modal-actions button[type="button"]:hover {
+  background-color: #e2e6ea;
+}
+
+.modal-actions button[type="submit"] {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.modal-actions button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.modal-content input,
+.modal-content select {
+  padding: 10px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease-in-out;
+  background-color: #ffffff;
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+.modal-content input:focus,
+.modal-content select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+/* --- Nút Xoá ở từng dòng dữ liệu --- */
+.btn-delete {
+  background: none;
+  border: none;
+  color: #ef4444; /* Màu đỏ */
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-delete:hover {
+  background-color: #fee2e2; /* Nền đỏ nhạt khi di chuột */
+  color: #dc2626; /* Chữ đỏ đậm hơn */
+}
+
+
+/* --- Nền tối che phủ toàn màn hình (Overlay) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Nền đen mờ 50% */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Đảm bảo modal luôn nằm trên cùng */
+}
+
+/* --- Khung nội dung Modal --- */
+.modal-content {
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px; /* Độ rộng tối đa của bảng hỏi */
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.25rem;
+  color: #1f2937;
+}
+
+.modal-content p {
+  margin-bottom: 0;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* Tùy chỉnh form xoá rộng hơn một chút */
+.delete-modal {
+  max-width: 480px; 
+  padding: 24px;
+}
+
+/* Chia bố cục icon và chữ nằm ngang */
+.delete-modal-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  text-align: left;
+}
+
+/* Khung tròn mờ cho icon cảnh báo */
+.warning-icon-bg {
+  background-color: #fee2e2; /* Nền đỏ nhạt */
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Định dạng lại Typography */
+.delete-modal-text h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.15rem;
+  color: #111827;
+  font-weight: 600;
+}
+
+.delete-modal-text p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Vùng chứa nút bấm */
+.delete-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-cancel {
+  padding: 8px 16px;
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  color: #374151;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: #f3f4f6;
+}
+
+.btn-confirm-delete {
+  padding: 8px 16px;
+  background-color: #ef4444;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.btn-confirm-delete:hover {
+  background-color: #dc2626;
+}
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap; /* Tự động xuống dòng khi hết chỗ */
+  gap: 16px; /* Khoảng cách giữa các mục */
+  margin-top: 5px;
+}
+
+/* Từng mục checkbox */
+.checkbox-item {
+  display: flex;
+  align-items: center; /* Căn giữa checkbox và text theo chiều dọc */
+  gap: 6px; /* Khoảng cách giữa ô vuông và chữ */
+  cursor: pointer; /* Đổi con trỏ chuột thành hình bàn tay */
+  font-weight: normal;
+  margin: 0; /* Xóa margin mặc định nếu có */
+}
+
+/* Chỉnh kích thước ô vuông to hơn một chút để dễ bấm */
+.checkbox-item input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* 1. Vùng chứa chính của Sidebar */
+.sidebar {
+  width: 260px; /* Chiều rộng cố định của thanh điều hướng */
+  height: 100vh; /* Chiều cao tràn 100% màn hình */
+  background-color: #ffffff; /* Nền trắng tinh dập nổi */
+  border-right: 1px solid #e5e7eb; /* Đường kẻ xám nhạt ngăn cách với màn hình chính */
+  padding: 24px;
+  display: flex;
+  flex-direction: column; /* Xếp dọc các phần tử */
+  box-sizing: border-box; /* Đảm bảo padding không làm tràn width */
+}
+
+/* 2. Tiêu đề hệ thống QLNV */
+.sidebar h2 {
+  margin: 0 0 32px 0; /* Khoảng cách xuống menu là 32px */
+  color: #2563eb; /* Tone xanh dương đậm */
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* 3. Nút Menu đang Active */
+.menu-item-active {
+  padding: 12px 16px;
+  background-color: #eff6ff; /* Nền xanh dương siêu nhạt */
+  color: #2563eb; /* Chữ màu xanh dương đậm */
+  border-radius: 8px; /* Bo góc hiện đại */
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Hiệu ứng khi rê chuột vào menu active */
+.menu-item-active:hover {
+  background-color: #dbeafe; 
+}
+
+/* 4. Bí quyết đẩy Logout xuống đáy */
+.sidebar-bottom {
+  margin-top: auto; /* Chiếm toàn bộ không gian thừa để đẩy phần này xuống sát đáy */
+}
+
+/* 5. Thiết kế nút Đăng xuất */
+.menu-item-logout {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px; /* Khoảng cách chuẩn giữa Icon và Text */
+  width: 100%;
+  padding: 12px 16px;
+  background-color: transparent; /* Mặc định không nền */
+  color: #64748b; /* Chữ màu xám trầm */
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease; /* Hiệu ứng chuyển màu mượt mà */
+}
+
+/* Hiệu ứng cảnh báo khi rê chuột vào nút Đăng xuất */
+.menu-item-logout:hover {
+  background-color: #fef2f2; /* Đổi nền thành đỏ pastel */
+  color: #dc2626; /* Icon và chữ chuyển sang đỏ thắm */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4); /* Đen mờ 40% */
+  backdrop-filter: blur(2px); /* Hiệu ứng làm mờ nền phía sau (rất xịn) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Đảm bảo nổi lên trên tất cả mọi thứ */
+}
+
+/* --- HỘP THOẠI TRẮNG Ở GIỮA --- */
+.modal-content {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 12px; /* Bo góc to, hiện đại */
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  animation: modalFadeIn 0.2s ease-out; /* Hiệu ứng trượt nhẹ lên khi xuất hiện */
+}
+
+/* --- TEXT TRONG MODAL --- */
+.modal-title {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.modal-desc {
+  margin: 0 0 24px 0;
+  font-size: 15px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* --- CỤM NÚT BẤM (HỦY VÀ XÁC NHẬN) --- */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end; /* Đẩy 2 nút sang góc bên phải */
+  gap: 12px; /* Khoảng cách giữa 2 nút */
+}
+
+.btn-cancel {
+  padding: 10px 16px;
+  background-color: #f1f5f9;
+  color: #475569;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: #e2e8f0;
+}
+
+.btn-confirm-logout {
+  padding: 10px 16px;
+  background-color: #ef4444; /* Màu đỏ nổi bật */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-confirm-logout:hover {
+  background-color: #dc2626; /* Đỏ đậm hơn khi hover */
+}
+
+/* --- HIỆU ỨNG CHUYỂN ĐỘNG TRƯỢT LÊN CHO MODAL --- */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* Đảm bảo mỗi nhóm chiếm 1 hàng ngang */
+.form-group-full {
+  display: block;
+  width: 100%;
+  margin-bottom: 16px; /* Khoảng cách giữa các hàng */
+}
+
+/* Label hiển thị dạng block để rớt dòng so với input */
+.form-group-full .form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+/* Wrapper chứa input và button con mắt */
+.password-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+/* Ô input chiếm 100% chiều ngang thẻ cha, chừa padding phải cho icon */
+.password-wrapper .form-control {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 40px 8px 12px; /* 40px bên phải để không gõ chữ đè lên icon */
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Nút bấm con mắt căn lề phải tuyệt đối so với thẻ cha */
+.toggle-password-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.toggle-password-btn:hover {
+  color: #333;
+}
+
+/* Style cho thông báo lỗi */
+.error-message {
+  display: block;
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.input-error {
+  border-color: red !important;
+}
+/* Trạng thái mặc định của Select */
+.modern-select {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937; /* Xám than đậm */
+  background-color: #ffffff;
+  border: 1.5px solid #e5e7eb; /* Viền xám nhạt */
+  border-radius: 8px; /* Bo góc mềm mại */
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  
+  /* BẮT BUỘC: Xóa bỏ mũi tên mặc định của trình duyệt */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  /* Tự vẽ mũi tên mới gọn gàng hơn bằng SVG */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  padding-right: 48px; /* Đẩy chữ tránh đè lên mũi tên */
+}
+
+/* Hiệu ứng khi lướt chuột qua */
+.modern-select:hover {
+  border-color: #d1d5db;
+}
+
+/* Hiệu ứng khi click vào (Tạo quầng sáng xanh) */
+.modern-select:focus {
+  border-color: #2563eb; /* Viền xanh dương */
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); /* Quầng sáng bao quanh */
+}
+
+/* ----------------------------------------- */
+/* Trạng thái khi Zod báo lỗi chưa nhập liệu  */
+/* ----------------------------------------- */
+.modern-select-error {
+  border-color: #ef4444 !important; /* Viền đỏ */
+  background-color: #fef2f2; /* Nền đỏ pastel */
+  color: #b91c1c;
+}
+
+.modern-select-error:focus {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.15) !important;
+}
+
+/* Tinh chỉnh các dòng tùy chọn bên trong (chỉ áp dụng một phần tùy trình duyệt) */
+.modern-select option {
+  font-weight: normal;
+  padding: 12px;
+  color: #1f2937;
+  background-color: #ffffff;
+}
